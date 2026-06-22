@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>再次遇见 · 麻将胡了</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5f2ed;
+            font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+            color: #2c2a28;
+            line-height: 1.7;
+        }
+        /* 深色头图 */
+        .hero {
+            background: #1e2a2d;
+            background-image: linear-gradient(145deg, #1e2a2d 0%, #2f3c3f 100%);
+            color: #e6dbcf;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid #4c5a5d;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.2rem;
+        }
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #bfb5a7;
+            font-style: italic;
+        }
+        .hero .small-note {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #8b9a9c;
+            letter-spacing: 1px;
+        }
+        /* 正文区 */
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 4rem;
+        }
+        .content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin: 2.5rem 0 1rem;
+            color: #1e2a2d;
+            border-left: 3px solid #b5895c;
+            padding-left: 1rem;
+        }
+        .content h2:first-of-type {
+            margin-top: 0.5rem;
+        }
+        .content p {
+            margin: 1.2rem 0;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+        .content a {
+            color: #b5895c;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .content a:hover {
+            border-bottom: 1px solid #b5895c;
+            color: #8f6a3f;
+        }
+        /* 引用提示块 */
+        .quote-box {
+            background: #eae2d9;
+            border-left: 4px solid #b5895c;
+            padding: 1.6rem 1.8rem;
+            margin: 2.2rem 0;
+            border-radius: 0 6px 6px 0;
+            font-style: normal;
+        }
+        .quote-box p {
+            margin: 0.4rem 0;
+            font-size: 1rem;
+        }
+        .quote-box .source {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: #5f5b56;
+            text-align: right;
+        }
+        /* 收藏卡片式列表 */
+        .collect-list {
+            margin: 2rem 0 1.5rem;
+            padding: 0;
+            list-style: none;
+        }
+        .collect-list li {
+            background: #fffcf8;
+            border: 1px solid #ddd5cb;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s;
+        }
+        .collect-list li:hover {
+            box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+        }
+        .collect-list .label {
+            font-weight: 600;
+            color: #4f3f31;
+            min-width: 4.5em;
+            font-size: 0.95rem;
+        }
+        .collect-list .desc {
+            color: #3d3630;
+            font-size: 0.98rem;
+        }
+        .collect-list .desc a {
+            font-weight: 500;
+        }
+        /* 访问句 */
+        .visit-sentence {
+            background: #f0ebe4;
+            padding: 1.8rem 2rem;
+            border-radius: 14px;
+            margin: 2.5rem 0 1rem;
+            text-align: center;
+            color: #2c2a28;
+        }
+        .visit-sentence p {
+            font-size: 1.15rem;
+            margin: 0.3rem 0;
+        }
+        .visit-sentence .highlight {
+            color: #8f6a3f;
+            font-weight: 500;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #ddd5cb;
+            margin: 2.5rem 0 1.5rem;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .faq-note {
+            background: transparent;
+            border: 1px dashed #c2b6a9;
+            padding: 1.2rem 1.8rem;
+            border-radius: 12px;
+            margin-top: 2.2rem;
+            font-size: 0.95rem;
+            color: #4c443c;
+        }
+        .faq-note strong {
+            color: #1e2a2d;
+        }
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            .hero {
+                padding: 3.5rem 1.2rem 3rem;
+            }
+            .content {
+                padding: 2.2rem 1.2rem 3rem;
+            }
+            .content h2 {
+                font-size: 1.5rem;
+            }
+            .collect-list li {
+                flex-direction: column;
+                gap: 0.2rem;
+                padding: 1rem 1.2rem;
+            }
+            .collect-list .label {
+                min-width: unset;
+            }
+            .visit-sentence {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+        @media (max-width: 420px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 0.98rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>再访 · 麻将胡了</h1>
+        <p>收藏一处安静的角落，让熟悉的声音慢慢回来。</p>
+        <div class="small-note">—— 记录与等待，都是陪伴</div>
+    </header>
+
+    <main class="content">
+        <h2>从一次收藏说起</h2>
+        <p>
+            有些地方，去了一次便想记住它的位置。不是因为路途遥远，而是因为那里有一种让人放松的节奏。<a href="https://cns-cn-mahjong.com">麻将胡了</a>对我来说，就是这样一个地方。它不喧哗，不催促，牌局之间的空隙里，仿佛能听见旧木桌和瓷杯碰撞的声音。
+        </p>
+        <p>
+            后来我把它收进了浏览器的书签栏，想着有空就再点开。可日子一忙，书签越积越多，很多都忘了最初为什么收藏。直到某个周末的下午，我重新打开了那个链接——页面还是那样干净，氛围依旧熟悉。我突然意识到，有些东西不需要常去，但值得被持续关注。
+        </p>
+
+        <div class="quote-box">
+            <p>“收藏不是为了囤积，而是给未来的自己留一扇门。”<br>再小的习惯，也能让重逢变得自然。</p>
+            <div class="source">—— 摘自某次牌局后的笔记</div>
+        </div>
+
+        <h2>持续关注的三个理由</h2>
+        <ul class="collect-list">
+            <li>
+                <span class="label">📌 节奏</span>
+                <span class="desc">不赶时间，不凑人数，一局有一局的呼吸感。适合一个人慢慢琢磨，也适合约三五旧友。</span>
+            </li>
+            <li>
+                <span class="label">📌 手感</span>
+                <span class="desc">无论网页还是移动端，操作都利落。牌面清晰，碰杠听胡，反馈带着一种恰好的钝感——像推倒一排真的骨牌。</span>
+            </li>
+            <li>
+                <span class="label">📌 陪伴</span>
+                <span class="desc">不需要时刻在线，也不用担心错过。它就在浏览器的一个标签页里，安静地等着，随时可以落座。</span>
+            </li>
+        </ul>
+
+        <h2>什么时候会想起它</h2>
+        <p>
+            雨天下午，茶凉了半壶；深夜加班回来，不想立刻睡去；朋友在群里问“有没有什么不累的娱乐”……这些时候，我往往会打开那个链接。不需要登录，不需要加载漫长的等待，直接进入一局。牌声在耳边隐隐约约，屏幕的光变得柔和。
+        </p>
+        <p>
+            它不试图占据你全部注意力，反而给你留出喘息的缝隙。赢也好，输也好，一局终了，关掉页面，生活继续。这种克制的存在感，恰恰让人愿意一再回头。
+        </p>
+
+        <!-- 访问句 自然嵌入 -->
+        <div class="visit-sentence">
+            <p>如果你也曾在某个下午偶然遇见过 <span class="highlight">麻将胡了</span>，不妨把它留在一个顺手的位置。</p>
+            <p style="font-size: 1rem; margin-top: 0.6rem;">下一次想找回那种节奏时，它还在那里。</p>
+        </div>
+
+        <hr>
+
+        <h2>一些零碎的 FAQ</h2>
+        <div class="faq-note">
+            <p><strong>Q：</strong> 需要注册或安装吗？<br>
+            <strong>A：</strong> 不用。打开 <a href="https://cns-cn-mahjong.com">麻将胡了</a> 就能开始，和第一次来的时候一样简单。</p>
+            <p style="margin-top: 0.8rem;"><strong>Q：</strong> 收藏夹里太多链接，怎么提醒自己常去？<br>
+            <strong>A：</strong> 我通常在周末的固定时间打开它，或者把它放在书签栏最左边。有时候只是点开看一眼牌桌，就觉得很安定。</p>
+            <p style="margin-top: 0.8rem;"><strong>Q：</strong> 之后会不会变样？<br>
+            <strong>A：</strong> 它一直保持着最初的风格，细节在慢慢打磨，但骨子里的气质没变。这也是我持续关注的原因之一。</p>
+        </div>
+
+        <p style="margin-top: 2.8rem; text-align: right; font-size: 0.9rem; color: #7b7168;">
+            —— 写于一个再普通不过的夜晚，存档一份安静的关注。
+        </p>
+    </main>
+</body>
+</html>
